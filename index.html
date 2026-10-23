@@ -115,6 +115,14 @@
 
     td.neg, .neg-text { color: var(--ink); }
 
+
+    /* polish: aligned inputs, chart label halo, next-step link */
+    .inputs, .adv { align-items: end; }
+    #chart .cap { paint-order: stroke; stroke: var(--paper-raised); stroke-width: 4px; stroke-linejoin: round; }
+    .next-step { border: 1px solid var(--rule); border-left: 4px solid var(--ink); background: var(--paper-raised); padding: 14px 16px; margin: 24px 0 0; }
+    .next-step .k { color: var(--ink-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+    .next-step a { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; text-transform: lowercase; }
+    .next-step p { margin: 4px 0 0; color: var(--ink-muted); font-size: 0.92rem; }
   </style>
 </head>
 <body>
@@ -128,21 +136,21 @@
     <section class="panel">
       <div class="inputs">
         <label class="field">Normal weekly units (before the promo)
-          <input type="number" id="b" min="1" step="10" inputmode="numeric"></label>
+          <input autocomplete="off" type="number" id="b" min="1" step="10" inputmode="numeric"></label>
         <label class="field">Regular price <span class="suffix">$</span>
-          <input type="number" id="p" min="0.01" step="0.5" inputmode="decimal"></label>
+          <input autocomplete="off" type="number" id="p" min="0.01" step="0.5" inputmode="decimal"></label>
         <label class="field">Unit cost <span class="suffix">$</span>
-          <input type="number" id="cst" min="0" step="0.5" inputmode="decimal"></label>
+          <input autocomplete="off" type="number" id="cst" min="0" step="0.5" inputmode="decimal"></label>
         <label class="field">Discount <span class="suffix">%</span>
-          <input type="number" id="d" min="0" max="90" step="1" inputmode="decimal"></label>
+          <input autocomplete="off" type="number" id="d" min="0" max="90" step="1" inputmode="decimal"></label>
         <label class="field">Promo length (weeks)
-          <input type="number" id="wp" min="1" max="52" step="1" inputmode="numeric"></label>
+          <input autocomplete="off" type="number" id="wp" min="1" max="52" step="1" inputmode="numeric"></label>
         <label class="field">Weekly units during the promo
-          <input type="number" id="up" min="0" step="10" inputmode="numeric"></label>
+          <input autocomplete="off" type="number" id="up" min="0" step="10" inputmode="numeric"></label>
         <label class="field">Weeks of dip afterwards
-          <input type="number" id="wd" min="0" max="52" step="1" inputmode="numeric"></label>
+          <input autocomplete="off" type="number" id="wd" min="0" max="52" step="1" inputmode="numeric"></label>
         <label class="field">Weekly units during the dip
-          <input type="number" id="ud" min="0" step="10" inputmode="numeric"></label>
+          <input autocomplete="off" type="number" id="ud" min="0" step="10" inputmode="numeric"></label>
       </div>
       <p class="hint">Take normal weekly units from the weeks before the promo, and dip units from the weeks after it. Unit cost is everything it costs to sell one more unit: product, shipping, fees and returns. Price after the promo is assumed to go back to regular.</p>
       <div id="err" role="alert"></div>
@@ -214,6 +222,7 @@ borrowed share  = dip units lost / extra units sold in the promo</div>
       <p><b>Units sold below cost always lose money.</b> If the discounted price is below unit cost, no amount of uplift fixes it.</p>
     </section>
 
+    <section class="next-step"><div class="k">next</div><a href="https://long-short-planner.benjads.com/">long and short planner</a><p>Set the brand and activation split before the next promo.</p></section>
     <footer class="site-foot">
       <picture><source media="(prefers-color-scheme: dark)" srcset="logo/benjads-footnote-paper-transparent.svg"><img src="logo/benjads-footnote-olive-transparent.svg" alt="ben.j.ads"></picture>
       <p><span class="tag">1</span>Profit arithmetic on units, price and cost you enter. No typical dip assumed. Marketing science, given away free, for people who spend money.</p>
